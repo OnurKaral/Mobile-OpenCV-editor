@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         }
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     protected void onResume() {
         super.onResume();
-
         if (!OpenCVLoader.initDebug()) {
 
             Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             openCVLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
+
+
 
     @Override
     protected void onDestroy() {
