@@ -1,4 +1,4 @@
-package com.example.opencv_imageprocessing_android;
+package com.example.opencv_imageprocessing_android.Database;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,14 +7,13 @@ import android.widget.EditText;
 import java.io.IOException;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.opencv_imageprocessing_android.Database.DataBase;
+import com.example.opencv_imageprocessing_android.R;
 
 public class Main2ActivityDeneme extends AppCompatActivity {
 

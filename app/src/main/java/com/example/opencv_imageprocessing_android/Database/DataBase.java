@@ -1,4 +1,4 @@
-package com.example.opencv_imageprocessing_android;
+package com.example.opencv_imageprocessing_android.Database;
 
 import android.content.Context;
 import android.database.SQLException;

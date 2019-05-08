@@ -71,11 +71,13 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         super.onResume();
         if (!OpenCVLoader.initDebug()) {
 
-
+            Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_3_0, this, openCVLoaderCallback);
 
         } else {
 
-            
+            Log.d(TAG, "OpenCV library found inside package. Using it!");
+            openCVLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
     }
 
