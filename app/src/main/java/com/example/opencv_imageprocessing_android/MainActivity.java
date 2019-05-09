@@ -18,11 +18,12 @@ import org.opencv.imgproc.Imgproc;
 
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
-    static final String TAG = MainActivity.class.getSimpleName();
+    private static  final String TAG = MainActivity.class.getSimpleName();
 
     private JavaCameraView cameraView;
 
     private Mat source;
+
 
     private BaseLoaderCallback openCVLoaderCallback = new BaseLoaderCallback(this) {
         @Override
