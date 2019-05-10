@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/relativeLayout"
+    android:background="@drawable/animation_list">
 
-    <TextView
-        android:id="@+id/info"
+
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="No camera view!"/>
+        android:layout_height="match_parent">
 
-    <org.opencv.android.JavaCameraView
-        android:id="@+id/camera"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:visibility="gone"
-        app:camera_id="back"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</FrameLayout>
+            <ImageView
+                android:id="@+id/imageViewLogo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/chaticon" />
+
+            <EditText
+                android:id="@+id/editTextUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Kullanıcı Adınız"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/editTextUserPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Şifreniz"
+                android:inputType="textPassword" />
+
+            <Button
+                android:textAllCaps="false"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/buttonLogin"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:background="#C8084FF5"
+                android:textColor="#FFFFFF"
+                android:layout_height="wrap_content"
+                android:text="Giriş" />
+
+            <TextView
+                android:id="@+id/txtRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:text="Kayıt Ol!" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
