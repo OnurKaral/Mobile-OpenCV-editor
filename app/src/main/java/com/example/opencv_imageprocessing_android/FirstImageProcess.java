@@ -95,7 +95,6 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
 
     @Override
     public void onCameraViewStopped() {
-
         source.release();
 
     }

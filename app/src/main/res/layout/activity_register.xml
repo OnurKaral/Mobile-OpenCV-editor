@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_centerInParent="true"
@@ -11,31 +12,52 @@
         android:layout_height="wrap_content">
 
 
-        <EditText
-            android:id="@+id/registerUserName"
+        <android.support.design.widget.TextInputLayout
+            app:boxStrokeColor="#6200ee"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:hint="Kullanıcı Adı" />
+            android:hint="Kullanıcı Adınız"
+            android:layout_gravity="center"
+            app:errorEnabled="true">
 
-        <EditText
-            android:inputType="textPassword"
-            android:id="@+id/registerPassword"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/registerUserName"
+                android:layout_width="286dp"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="#6200ee"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="20dp"
-            android:hint="Şifre" />
+            android:hint="Şifreniz"
+            android:layout_gravity="center"
+            app:errorEnabled="true">
 
-        <Button
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/registerPassword"
+                android:layout_width="286dp"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.button.MaterialButton
             android:id="@+id/buttonRegister"
-            android:background="@color/colorAccent"
+            android:layout_width="126dp"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="15dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="#ffffff"
-            android:text="Kayıt Ol"/>
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:backgroundTint="#6200ee"
+            android:text="KAYIT OL"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="5dp" />
 
 
     </LinearLayout>
