@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(firebaseUser != null){
 
-            Intent i = new Intent(MainActivity.this,ProfileActivity.class);
+            Intent i = new Intent(MainActivity.this,HomePage.class);
             startActivity(i);
             finish();
         }
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            Intent i = new Intent(MainActivity.this,ProfileActivity.class);
+                            Intent i = new Intent(MainActivity.this,HomePage.class);
                             startActivity(i);
                             finish();
 
