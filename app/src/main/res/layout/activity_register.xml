@@ -42,7 +42,8 @@
                 android:id="@+id/registerPassword"
                 android:layout_width="286dp"
                 android:layout_height="wrap_content"
-                android:background="@null"/>
+                android:background="@null"
+                android:inputType="textPassword"/>
 
         </android.support.design.widget.TextInputLayout>
 

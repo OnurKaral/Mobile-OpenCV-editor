@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/relativeLayout"
+
     android:background="#FFFFFF">
 
 
@@ -28,10 +29,12 @@
 
             <android.support.design.widget.TextInputLayout
                 app:boxStrokeColor="#6200ee"
+
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Kullanıcı Adınız"
+
                 android:layout_gravity="center"
                 app:errorEnabled="true">
 
@@ -39,7 +42,7 @@
                     android:id="@+id/editTextUserName"
                     android:layout_width="286dp"
                     android:layout_height="wrap_content"
-                    android:background="@null"/>
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -56,7 +59,8 @@
                     android:id="@+id/editTextUserPassword"
                     android:layout_width="286dp"
                     android:layout_height="wrap_content"
-                    android:background="@null"/>
+                    android:background="@null"
+                    android:inputType="textPassword"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -73,14 +77,16 @@
                 android:textColor="#FFFFFF"
                 app:cornerRadius="5dp" />
 
-            <TextView
-                android:id="@+id/txtRegister"
-                android:layout_width="match_parent"
+            <android.support.design.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="126dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:text="Kayıt Ol!" />
+                android:layout_gravity="center"
+                app:cornerRadius="5dp"
+                android:id="@+id/txtRegister"
+                android:hint="Kayıt ol"
+                android:textColorHint="#6200ee"
+                />
 
         </LinearLayout>
 

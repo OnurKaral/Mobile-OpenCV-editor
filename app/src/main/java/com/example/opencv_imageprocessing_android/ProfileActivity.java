@@ -1,6 +1,7 @@
 package com.example.opencv_imageprocessing_android;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button changeEmailBttn;
     private Button changePasswordBttn;
     private Button signOutBttn;
+    private Button GeriTusu;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener authListener;
@@ -50,6 +52,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
+
         //Kullanıcıyı Çağırma
         auth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -68,13 +73,26 @@ public class ProfileActivity extends AppCompatActivity {
         changeEmailBttn = (Button) findViewById(R.id.changeEmailBttn);
         changePasswordBttn = (Button) findViewById(R.id.changePasswordBttn);
         signOutBttn = (Button) findViewById(R.id.signOutBttn);
+        GeriTusu =(Button) findViewById(R.id.Geritusu) ;
+
+        GeriTusu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this,HomePage.class);
+                startActivity(intent);
+            }
+        });
+
 
         userNameTxt.setText("Kullanıcı Adı:" + " " + auth.getCurrentUser().getEmail());
 
         signOutBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 signOutFunc(); // sign out
+                Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -83,6 +101,8 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 str = "Lütfen yeni e-posta adresini giriniz.";
                 changeEmailOrPasswordFunc(str, true);
+
+
             }
         });
 
@@ -91,6 +111,8 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 str = "Lütfen yeni şifreyi giriniz.";
                 changeEmailOrPasswordFunc(str, false);
+
+
             }
         });
 
@@ -160,6 +182,8 @@ public class ProfileActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ProfileActivity.this, "Şifre değiştirildi.", Toast.LENGTH_LONG).show();
                                     signOutFunc();
+                                    Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
+                                    startActivity(intent);
                                 } else {
                                     edit.setText("");
                                     Toast.makeText(ProfileActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -176,7 +200,9 @@ public class ProfileActivity extends AppCompatActivity {
                             public void onComplete(Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ProfileActivity.this, "E-posta değiştirildi.", Toast.LENGTH_LONG).show();
-                                    signOutFunc();
+                                    signOutFunc(); // sign out
+                                    Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
+                                    startActivity(intent);
 
                                 } else {
                                     edit.setText("");
