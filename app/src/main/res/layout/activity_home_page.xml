@@ -26,18 +26,12 @@
         app:backgroundTint="@color/blue_500"
         app:layout_anchor="@id/bar" />
 
-    <android.support.design.card.MaterialCardView
+    // Recycler View widget
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:minHeight="200dp"
-        app:cardBackgroundColor="@color/blue_500">
-
-        <!-- Card contents. -->
-
-    </android.support.design.card.MaterialCardView>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
 
 
 
