@@ -7,6 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 
     <android.support.design.bottomappbar.BottomAppBar
@@ -15,23 +20,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:navigationIcon="@drawable/ic_settings_black_24dp"
-        app:backgroundTint="@color/cardview_dark_background"
-        app:hideOnScroll="true"/>
+        app:backgroundTint="#6200ee"
+        app:hideOnScroll="true"
+        app:fabCradleRoundedCornerRadius="4dp"
+        app:fabCradleMargin="6dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Kamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_add_black_24dp"
-        app:backgroundTint="@color/blue_500"
+        app:backgroundTint="#000000"
         app:layout_anchor="@id/bar" />
 
-    // Recycler View widget
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/RV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
+
+
 
 
 
