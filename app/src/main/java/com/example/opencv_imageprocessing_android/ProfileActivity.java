@@ -172,7 +172,6 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
             }
-
             private void changePassword() {
 
                 firebaseUser.updatePassword(edit.getText().toString())
