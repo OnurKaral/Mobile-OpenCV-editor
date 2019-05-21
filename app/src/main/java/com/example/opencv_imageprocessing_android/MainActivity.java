@@ -2,6 +2,7 @@ package com.example.opencv_imageprocessing_android;
 
 
 import android.provider.ContactsContract;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private String userName;
     private String userPassword;
     RelativeLayout relativeLayout;
+
     //****************************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         txtRegister = (TextView) findViewById(R.id.txtRegister);
         relativeLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
-
 
 
         mAuth = FirebaseAuth.getInstance();

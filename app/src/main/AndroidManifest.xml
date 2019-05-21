@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Secondimageprocess"></activity>
         <activity android:name=".FirstImageProcess" />
         <activity android:name=".HomePage" />
         <activity android:name=".ProfileActivity" />

@@ -19,19 +19,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:navigationIcon="@drawable/ic_settings_black_24dp"
         app:backgroundTint="#6200ee"
-        app:hideOnScroll="true"
+        app:fabCradleMargin="6dp"
         app:fabCradleRoundedCornerRadius="4dp"
-        app:fabCradleMargin="6dp"/>
+        app:hideOnScroll="true"
+        app:navigationIcon="@drawable/ic_settings_black_24dp" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Kamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_add_black_24dp"
         app:backgroundTint="#000000"
-        app:layout_anchor="@id/bar" />
+        app:layout_anchor="@id/bar"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/birinci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="150dp"
+        app:backgroundTint="#6200ee"
+        app:fab_size="mini"
+        app:layout_anchor="@+id/ikinci"
+        app:layout_anchorGravity="top|center"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/ikinci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="90dp"
+        android:backgroundTint="#6200ee"
+        app:fab_size="mini"
+        app:layout_anchor="@+id/Kamera"
+        app:layout_anchorGravity="top|center"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 
 
 

@@ -3,6 +3,7 @@ package com.example.opencv_imageprocessing_android;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button changeEmailBttn;
     private Button changePasswordBttn;
     private Button signOutBttn;
-    private Button GeriTusu;
+    private FloatingActionButton GeriTusu;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener authListener;
@@ -73,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         changeEmailBttn = (Button) findViewById(R.id.changeEmailBttn);
         changePasswordBttn = (Button) findViewById(R.id.changePasswordBttn);
         signOutBttn = (Button) findViewById(R.id.signOutBttn);
-        GeriTusu =(Button) findViewById(R.id.Geritusu) ;
+        GeriTusu =(FloatingActionButton) findViewById(R.id.Geritusu) ;
 
         GeriTusu.setOnClickListener(new View.OnClickListener() {
             @Override

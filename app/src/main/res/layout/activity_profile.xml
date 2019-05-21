@@ -55,18 +55,13 @@
         android:textColor="#FFFFFF"
         app:cornerRadius="5dp" />
 
-        <android.support.design.button.MaterialButton
-           android:id="@+id/Geritusu"
-            android:layout_width="100dp"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/Geritusu"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:paddingLeft="7dp"
+            android:layout_gravity="center"
             app:backgroundTint="#6200ee"
-            android:text="Geri gel"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            app:cornerRadius="5dp" />
+            app:srcCompat="@drawable/ic_home_black_24dp"/>
 
 
 
