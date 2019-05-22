@@ -1,4 +1,6 @@
-package com.example.opencv_imageprocessing_android;
+package com.example.opencv_imageprocessing_android.Cards;
+
+import com.example.opencv_imageprocessing_android.R;
 
 import java.util.Locale;
 

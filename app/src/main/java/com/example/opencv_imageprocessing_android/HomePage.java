@@ -7,10 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+
+import com.example.opencv_imageprocessing_android.Cards.Adapter;
+import com.example.opencv_imageprocessing_android.Cards.ImagesData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         FloatingActionButton birinci, ikinci,Kamera;
         Float translationY = 100f;
 
+
         OvershootInterpolator overshootInterpolator = new OvershootInterpolator();
     Boolean isMenuOpen = false;
 
@@ -34,7 +36,28 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             initFabMenu();
 
 
+            mRecyclerView = findViewById(R.id.RV);
 
+            List<ImagesData> dataModelList = new ArrayList<>();
+            for (int i = 1; i <= 20; ++i) {
+                dataModelList.add(new ImagesData(i));
+            }
+
+            // use this setting to improve performance if you know that changes
+
+            // in content do not change the layout size of the RecyclerView
+
+            mRecyclerView.setHasFixedSize(true);
+
+            // use a linear layout manager
+
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            // specify an adapter and pass in our data model list
+
+            mAdapter = new Adapter(dataModelList, this);
+            mRecyclerView.setAdapter(mAdapter);
 
 
 

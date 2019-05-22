@@ -1,4 +1,4 @@
-package com.example.opencv_imageprocessing_android;
+package com.example.opencv_imageprocessing_android.Cards;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.opencv_imageprocessing_android.R;
 
 import java.util.List;
 
