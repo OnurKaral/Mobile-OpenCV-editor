@@ -21,7 +21,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         private RecyclerView mRecyclerView;
         private RecyclerView.Adapter mAdapter;
         private RecyclerView.LayoutManager mLayoutManager;
-        FloatingActionButton birinci, ikinci,Kamera;
+        FloatingActionButton birinci, ikinci,Kamera,ucuncu;
         Float translationY = 100f;
 
 
@@ -79,6 +79,15 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this,HoughCircleTransform.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton floatingActionButton2 = (FloatingActionButton)findViewById(R.id.ucuncu);
+        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(HomePage.this,Secondimageprocess.class);
                 startActivity(intent);
             }
@@ -97,17 +106,21 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
     private  void initFabMenu(){
         birinci = findViewById(R.id.birinci);
         ikinci =findViewById(R.id.ikinci);
+        ucuncu =findViewById(R.id.ucuncu);
         Kamera = findViewById(R.id.Kamera);
 
         birinci.setAlpha(0f);
         ikinci.setAlpha(0f);
+        ucuncu.setAlpha(0f);
 
         birinci.setTranslationY(translationY);
         ikinci.setTranslationY(translationY);
+        ucuncu.setTranslationY(translationY);
 
         Kamera.setOnClickListener(this);
         birinci.setOnClickListener(this);
         ikinci.setOnClickListener(this);
+        ucuncu.setOnClickListener(this);
     }
 
     private void openMenu(){
@@ -116,12 +129,14 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             Kamera.animate().setInterpolator(overshootInterpolator).rotation(45f).setDuration(300).start();
             birinci.animate().translationY(0f).alpha(1f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ikinci.animate().translationY(0f).alpha(1f).setInterpolator(overshootInterpolator).setDuration(300).start();
+            ucuncu.animate().translationY(0f).alpha(1f).setInterpolator(overshootInterpolator).setDuration(300).start();
     }
     private  void closeMenu(){
             isMenuOpen = !isMenuOpen;
         Kamera.animate().setInterpolator(overshootInterpolator).rotation(0f).setDuration(300).start();
         birinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
         ikinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
+        ucuncu.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
     }
     @Override
     public void onClick(View v) {
@@ -136,6 +151,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                 case R.id.birinci:
                     break;
                 case R.id.ikinci:
+                    break;
+                case R.id.ucuncu:
                     break;
 
             }
