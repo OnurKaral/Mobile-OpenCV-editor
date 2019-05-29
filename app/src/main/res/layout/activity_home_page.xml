@@ -11,8 +11,7 @@
         android:id="@+id/RV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:visibility="invisible"/>
+        android:scrollbars="vertical" />
 
 
     <android.support.design.bottomappbar.BottomAppBar

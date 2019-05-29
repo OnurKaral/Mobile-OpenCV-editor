@@ -7,14 +7,8 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.core.Point;
 import org.opencv.imgproc.Imgproc;
-
 import android.util.Log;
 
-
-/**
- * This class is a controller for puzzle game.
- * It converts the image from Camera into the shuffled image
- */
 public class Puzzle15Processor {
 
     private static final int GRID_SIZE = 4;
@@ -22,15 +16,13 @@ public class Puzzle15Processor {
     private static final int GRID_EMPTY_INDEX = GRID_AREA - 1;
     private static final String TAG = "Puzzle15Processor";
     private static final Scalar GRID_EMPTY_COLOR = new Scalar(0x33, 0x33, 0x33, 0xFF);
-
     private int[]   mIndexes;
     private int[]   mTextWidths;
     private int[]   mTextHeights;
-
     private Mat mRgba15;
     private Mat[] mCells15;
     private boolean mShowTileNumbers = true;
-
+    //****************************************************************************************************
     public Puzzle15Processor() {
         mTextWidths = new int[GRID_AREA];
         mTextHeights = new int[GRID_AREA];
@@ -41,17 +33,12 @@ public class Puzzle15Processor {
             mIndexes[i] = i;
     }
 
-    /* this method is intended to make processor prepared for a new game */
     public synchronized void prepareNewGame() {
         do {
             shuffle(mIndexes);
         } while (!isPuzzleSolvable());
     }
-
-    /* This method is to make the processor know the size of the frames that
-     * will be delivered via puzzleFrame.
-     * If the frames will be different size - then the result is unpredictable
-     */
+    //****************************************************************************************************
     public synchronized void prepareGameSize(int width, int height) {
         mRgba15 = new Mat(height, width, CvType.CV_8UC4);
         mCells15 = new Mat[GRID_AREA];
@@ -70,9 +57,7 @@ public class Puzzle15Processor {
         }
     }
 
-    /* this method to be called from the outside. it processes the frame and shuffles
-     * the tiles as specified by mIndexes array
-     */
+    //****************************************************************************************************
     public synchronized Mat puzzleFrame(Mat inputPicture) {
         Mat[] cells = new Mat[GRID_AREA];
         int rows = inputPicture.rows();
@@ -91,7 +76,7 @@ public class Puzzle15Processor {
         rows = rows - rows%4;
         cols = cols - cols%4;
 
-        // copy shuffled tiles
+
         for (int i = 0; i < GRID_AREA; i++) {
             int idx = mIndexes[i];
             if (idx == GRID_EMPTY_INDEX)
@@ -104,7 +89,6 @@ public class Puzzle15Processor {
                 }
             }
         }
-
         for (int i = 0; i < GRID_AREA; i++)
             cells[i].release();
 

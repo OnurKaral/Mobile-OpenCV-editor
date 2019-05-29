@@ -3,7 +3,6 @@ package com.example.opencv_imageprocessing_android;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
@@ -15,9 +14,8 @@ import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 public class HoughCircleTransform extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
-
     public static final String TAG = "src";
-
+    //****************************************************************************************************
     static {
         if (!OpenCVLoader.initDebug()) {
             Log.wtf(TAG, "OpenCV failed to load!");
@@ -39,6 +37,7 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
             }
         }
     };
+    //****************************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,7 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
         //cameraView.setMaxFrameSize(1280, 720);
     }
 
-
+    //****************************************************************************************************
     @Override
     protected void onResume() {
         super.onResume();
@@ -73,7 +72,7 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
     public void onCameraViewStopped() {
 
     }
-
+    //****************************************************************************************************
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat input = inputFrame.gray();
@@ -98,7 +97,7 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
                 Imgproc.circle(input, center, radius, new Scalar(255, 255, 255), 2);
             }
         }
-
+//****************************************************************************************************
         circles.release();
         input.release();
         return inputFrame.rgba();

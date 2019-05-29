@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.opencv.core.Mat;
+
 public class ProfileActivity extends AppCompatActivity {
     //XML bileşen tanımlama
     private TextView userNameTxt;
@@ -76,6 +78,8 @@ public class ProfileActivity extends AppCompatActivity {
         signOutBttn = (Button) findViewById(R.id.signOutBttn);
         GeriTusu =(FloatingActionButton) findViewById(R.id.Geritusu) ;
 
+
+
         GeriTusu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +87,8 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
         userNameTxt.setText("Kullanıcı Adı:" + " " + auth.getCurrentUser().getEmail());

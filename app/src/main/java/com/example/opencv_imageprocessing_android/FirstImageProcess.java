@@ -1,6 +1,5 @@
 package com.example.opencv_imageprocessing_android;
 
-import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +13,7 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-
-
+//****************************************************************************************************
 public class FirstImageProcess extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2{
     static final String TAG = FirstImageProcess.class.getSimpleName();
     private JavaCameraView cameraView;
@@ -40,6 +38,7 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
             }
         }
     };
+    //****************************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +84,7 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
 
         super.onDestroy();
     }
-
+    //****************************************************************************************************
     @Override
     public void onCameraViewStarted(int width, int height) {
 

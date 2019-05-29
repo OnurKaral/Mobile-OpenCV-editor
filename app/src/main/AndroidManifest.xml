@@ -17,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Secondimageprocess"></activity>
+        <activity android:name=".Secondimageprocess" />
         <activity android:name=".FirstImageProcess" />
         <activity android:name=".HomePage" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".HoughCircleTransform"/>
+        <activity android:name=".HoughCircleTransform" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

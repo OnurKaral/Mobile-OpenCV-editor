@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:backgroundTint="#6200ee"
-            app:srcCompat="@drawable/ic_home_black_24dp"/>
+            app:srcCompat="@drawable/ic_home_black_24dp" />
 
 
 

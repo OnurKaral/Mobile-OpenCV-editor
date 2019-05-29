@@ -9,20 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.opencv_imageprocessing_android.R;
-
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
-
+    //****************************************************************************************************
     private List<ImagesData> dataModelList;
     private Context mContext;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView cardImageView;
         public TextView titleTextView;
         public TextView subTitleTextView;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardImageView = itemView.findViewById(R.id.imageView);

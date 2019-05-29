@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private void loginFunc() {
 
         mAuth.signInWithEmailAndPassword(userName,userPassword).addOnCompleteListener(MainActivity.this,

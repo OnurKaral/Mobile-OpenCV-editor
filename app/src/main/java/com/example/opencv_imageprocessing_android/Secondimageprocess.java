@@ -7,7 +7,6 @@ import org.opencv.core.Mat;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener;
 import org.opencv.android.JavaCameraView;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -20,26 +19,20 @@ import android.view.WindowManager;
 public class Secondimageprocess extends Activity implements CvCameraViewListener, View.OnTouchListener {
 
     private static final String  TAG = "Sample::Puzzle15::Activity";
-
     private CameraBridgeViewBase mOpenCvCameraView;
     private Puzzle15Processor    mPuzzle15;
     private MenuItem             mItemHideNumbers;
     private MenuItem             mItemStartNewGame;
-
-
     private int                  mGameWidth;
     private int                  mGameHeight;
-
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
-
+        //****************************************************************************************************
         @Override
         public void onManagerConnected(int status) {
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS:
                 {
 
-
-                    /* Now enable camera view to start receiving frames */
                     mOpenCvCameraView.setOnTouchListener(Secondimageprocess.this);
                     mOpenCvCameraView.enableView();
                 } break;
@@ -50,12 +43,11 @@ public class Secondimageprocess extends Activity implements CvCameraViewListener
             }
         }
     };
-
+    //****************************************************************************************************
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
 
         mOpenCvCameraView = (CameraBridgeViewBase) new JavaCameraView(this, -1);
         setContentView(mOpenCvCameraView);
@@ -91,7 +83,7 @@ public class Secondimageprocess extends Activity implements CvCameraViewListener
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
     }
-
+    //****************************************************************************************************
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -138,7 +130,7 @@ public class Secondimageprocess extends Activity implements CvCameraViewListener
 
         return false;
     }
-
+    //****************************************************************************************************
     public Mat onCameraFrame(Mat inputFrame) {
         return mPuzzle15.puzzleFrame(inputFrame);
     }

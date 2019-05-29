@@ -9,21 +9,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
-
 import com.example.opencv_imageprocessing_android.Cards.Adapter;
 import com.example.opencv_imageprocessing_android.Cards.ImagesData;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener{
-
         private RecyclerView mRecyclerView;
         private RecyclerView.Adapter mAdapter;
         private RecyclerView.LayoutManager mLayoutManager;
         FloatingActionButton birinci, ikinci,Kamera,ucuncu;
         Float translationY = 100f;
-
 
         OvershootInterpolator overshootInterpolator = new OvershootInterpolator();
     Boolean isMenuOpen = false;
@@ -42,28 +38,15 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             for (int i = 1; i <= 20; ++i) {
                 dataModelList.add(new ImagesData(i));
             }
-
-            // use this setting to improve performance if you know that changes
-
-            // in content do not change the layout size of the RecyclerView
-
             mRecyclerView.setHasFixedSize(true);
-
-            // use a linear layout manager
-
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
-
-            // specify an adapter and pass in our data model list
-
             mAdapter = new Adapter(dataModelList, this);
             mRecyclerView.setAdapter(mAdapter);
 
 
 
-
-            // create a notification
-
+ //****************************************************************************************************
         BottomAppBar bar =(BottomAppBar)findViewById(R.id.bar);
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.ikinci);
 
@@ -103,6 +86,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             }
         });
     }
+
     private  void initFabMenu(){
         birinci = findViewById(R.id.birinci);
         ikinci =findViewById(R.id.ikinci);
