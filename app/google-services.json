@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "999187033407-u1v0r49tsl6coo0t60o804scs3tmf3bi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.opencv_imageprocessing_android",
+            "certificate_hash": "19a9a65beef71715cf0b3a80c0da53de0e5eb288"
+          }
+        },
+        {
           "client_id": "999187033407-2g52t6e8oikklredrsnso2mnq81taeo6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

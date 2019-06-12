@@ -56,7 +56,14 @@
         app:cornerRadius="5dp" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/Geritusu"
+        android:id="@+id/Geritusu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:backgroundTint="#6200ee"
+        app:srcCompat="@drawable/ic_home_black_24dp" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/uploadpage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

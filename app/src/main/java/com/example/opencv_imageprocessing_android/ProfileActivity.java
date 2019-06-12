@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button changeEmailBttn;
     private Button changePasswordBttn;
     private Button signOutBttn;
-    private FloatingActionButton GeriTusu;
+    private FloatingActionButton GeriTusu, Uploadpage;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener authListener;
@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         changePasswordBttn = (Button) findViewById(R.id.changePasswordBttn);
         signOutBttn = (Button) findViewById(R.id.signOutBttn);
         GeriTusu =(FloatingActionButton) findViewById(R.id.Geritusu) ;
-
+        Uploadpage=(FloatingActionButton)findViewById(R.id.uploadpage);
 
 
         GeriTusu.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +89,13 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-
+        Uploadpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this,UploadActivity.class);
+                startActivity(intent);
+            }
+        });
 
         userNameTxt.setText("Kullanıcı Adı:" + " " + auth.getCurrentUser().getEmail());
 
