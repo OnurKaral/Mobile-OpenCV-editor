@@ -38,11 +38,11 @@ public class UploadActivity extends AppCompatActivity    {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private Button mButtonChooseImage;
-    private Button mButtonUpload;
-    private TextView mTextViewShowUploads;
-    private EditText mEditTextFileName;
-    private ImageView mImageView;
+    private Button ButtonChoose;
+    private Button ButtonUpload;
+    private TextView ShowUploads;
+    private EditText Dosya_adi;
+    private ImageView ImageView;
     private ProgressBar mProgressBar;
 
     private Uri mImageUri;
@@ -57,24 +57,24 @@ public class UploadActivity extends AppCompatActivity    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        mButtonChooseImage = findViewById(R.id.button_choose_image);
-        mButtonUpload = findViewById(R.id.button_upload);
-        mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
-        mEditTextFileName = findViewById(R.id.edit_text_file_name);
-        mImageView = findViewById(R.id.image_view);
+        ButtonChoose = findViewById(R.id.buton_choose);
+        ButtonUpload = findViewById(R.id.buton_upload);
+        ShowUploads = findViewById(R.id.text_view_show_uploads);
+        Dosya_adi = findViewById(R.id.dosya_adi);
+        ImageView = findViewById(R.id.image_view);
         mProgressBar = findViewById(R.id.progress_bar);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
-        mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
+        ButtonChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFileChooser();
             }
         });
 
-        mButtonUpload.setOnClickListener(new View.OnClickListener() {
+        ButtonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mUploadTask != null && mUploadTask.isInProgress()) {
@@ -85,7 +85,7 @@ public class UploadActivity extends AppCompatActivity    {
             }
         });
 
-        mTextViewShowUploads.setOnClickListener(new View.OnClickListener() {
+        ShowUploads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -107,7 +107,7 @@ public class UploadActivity extends AppCompatActivity    {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            mImageView.setImageURI(mImageUri);
+            ImageView.setImageURI(mImageUri);
 
 
 
@@ -138,7 +138,7 @@ public class UploadActivity extends AppCompatActivity    {
                             }, 500);
 
                             Toast.makeText(UploadActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
+                            Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
                                     taskSnapshot.getStorage().getDownloadUrl().toString());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);

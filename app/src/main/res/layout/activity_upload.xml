@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="com.codinginflow.firebaseuploadexample.MainActivity">
+    tools:context="com.example.opencv_imageprocessing_android.UploadActivity">
 
     <Button
-        android:id="@+id/button_choose_image"
+        android:id="@+id/buton_choose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose file" />
+        android:text="Dosya Sec" />
 
     <EditText
-        android:id="@+id/edit_text_file_name"
+        android:id="@+id/dosya_adi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/button_choose_image"
-        android:hint="Enter file name" />
+        android:layout_toEndOf="@+id/buton_choose"
+        android:hint="AD GİRİNİZ:" />
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/progress_bar"
-        android:layout_below="@id/edit_text_file_name"
+        android:layout_below="@id/dosya_adi"
         android:layout_marginTop="16dp" />
 
     <ProgressBar
@@ -34,12 +33,12 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button_upload"
+        android:layout_above="@+id/buton_upload"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp" />
 
     <Button
-        android:id="@+id/button_upload"
+        android:id="@+id/buton_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -50,10 +49,10 @@
         android:id="@+id/text_view_show_uploads"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button_upload"
-        android:layout_alignTop="@+id/button_upload"
+        android:layout_alignBottom="@+id/buton_upload"
+        android:layout_alignTop="@+id/buton_upload"
         android:layout_marginStart="25dp"
-        android:layout_toEndOf="@+id/button_upload"
+        android:layout_toEndOf="@+id/buton_upload"
         android:gravity="center"
         android:text="Show Uploads"
         android:textSize="16sp" />
