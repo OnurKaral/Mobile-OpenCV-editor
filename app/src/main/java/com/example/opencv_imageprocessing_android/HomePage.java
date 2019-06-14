@@ -1,6 +1,7 @@
 package com.example.opencv_imageprocessing_android;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,19 +10,31 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.opencv_imageprocessing_android.Cards.Adapter;
-import com.example.opencv_imageprocessing_android.Cards.ImagesData;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener{
         private RecyclerView mRecyclerView;
-        private RecyclerView.Adapter mAdapter;
+        private Adapter mAdapter;
+        private ProgressBar progressBar;
         private RecyclerView.LayoutManager mLayoutManager;
         FloatingActionButton birinci, ikinci,Kamera,ucuncu;
         Float translationY = 100f;
 
-        OvershootInterpolator overshootInterpolator = new OvershootInterpolator();
+    private DatabaseReference DatabaseREF;
+    private List<Upload> Uploads;
+
+    OvershootInterpolator overshootInterpolator = new OvershootInterpolator();
     Boolean isMenuOpen = false;
 
         @Override
@@ -33,16 +46,35 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
 
 
             mRecyclerView = findViewById(R.id.RV);
+            progressBar = findViewById(R.id.progress_bar);
 
-            List<ImagesData> dataModelList = new ArrayList<>();
-            for (int i = 1; i <= 20; ++i) {
-                dataModelList.add(new ImagesData(i));
-            }
             mRecyclerView.setHasFixedSize(true);
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
-            mAdapter = new Adapter(dataModelList, this);
-            mRecyclerView.setAdapter(mAdapter);
+            Uploads = new ArrayList<>();
+            DatabaseREF = FirebaseDatabase.getInstance().getReference("uploads");
+            DatabaseREF.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Upload upload = snapshot.getValue(Upload.class);
+                    Uploads.add(upload);
+                }
+                    mAdapter = new Adapter(HomePage.this,Uploads);
+                    mRecyclerView.setAdapter(mAdapter);
+
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(HomePage.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+
+
+
+                }
+            });
+
 
 
 

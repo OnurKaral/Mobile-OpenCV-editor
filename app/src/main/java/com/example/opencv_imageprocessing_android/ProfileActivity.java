@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         changePasswordBttn = (Button) findViewById(R.id.changePasswordBttn);
         signOutBttn = (Button) findViewById(R.id.signOutBttn);
         GeriTusu =(FloatingActionButton) findViewById(R.id.Geritusu) ;
-        Uploadpage=(FloatingActionButton)findViewById(R.id.uploadpage);
+        Uploadpage=(FloatingActionButton)findViewById(R.id.upload_page);
 
 
         GeriTusu.setOnClickListener(new View.OnClickListener() {

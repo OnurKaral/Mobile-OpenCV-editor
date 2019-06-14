@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -88,7 +89,7 @@ public class UploadActivity extends AppCompatActivity    {
         ShowUploads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            HomePageacar();
             }
         });
     }
@@ -137,11 +138,15 @@ public class UploadActivity extends AppCompatActivity    {
                                 }
                             }, 500);
 
+
+
                             Toast.makeText(UploadActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                             Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
-                                    taskSnapshot.getStorage().getDownloadUrl().toString());
+                                    taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -160,5 +165,10 @@ public class UploadActivity extends AppCompatActivity    {
         } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void HomePageacar(){
+        Intent intent = new Intent(this,HomePage.class);
+        startActivity(intent);
     }
 }

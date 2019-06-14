@@ -1,51 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <android.support.design.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="4dp"
-        android:layout_marginBottom="15dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/card_textview"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="İsim"
+            android:textColor="#6200ee"
+            android:textSize="22sp"
+            android:layout_gravity="center_horizontal"
+            />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/list_image" />
+        <ImageView
+            android:id="@+id/card_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="560dp"
+            />
 
-            <TextView
-                android:id="@+id/card_title"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="20dp"
-                android:text="Title goes here"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-            <TextView
-                android:id="@+id/card_subtitle"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Subtitle goes here"
-                app:layout_constraintStart_toStartOf="@+id/card_title"
-                app:layout_constraintTop_toBottomOf="@+id/card_title" />
+    </LinearLayout>
 
 
-
-
-        </android.support.constraint.ConstraintLayout>
-    </android.support.design.card.MaterialCardView>
+</android.support.design.card.MaterialCardView>
 

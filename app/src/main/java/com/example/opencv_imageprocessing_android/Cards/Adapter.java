@@ -10,33 +10,31 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.opencv_imageprocessing_android.R;
+import com.example.opencv_imageprocessing_android.Upload;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     //****************************************************************************************************
-    private List<ImagesData> dataModelList;
+    private List<Upload> dataModelList;
     private Context mContext;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView cardImageView;
         public TextView titleTextView;
-        public TextView subTitleTextView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardImageView = itemView.findViewById(R.id.imageView);
-            titleTextView = itemView.findViewById(R.id.card_title);
-            subTitleTextView = itemView.findViewById(R.id.card_subtitle);
+            
+            cardImageView = itemView.findViewById(R.id.card_imageview);
+            titleTextView = itemView.findViewById(R.id.card_textview);
         }
 
-        public void bindData(ImagesData dataModel, Context context) {
-            cardImageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.list_image));
-            titleTextView.setText(dataModel.getTitle());
-            subTitleTextView.setText(dataModel.getSubTitle());
-        }
+
     }
 
-    public Adapter(List<ImagesData> modelList, Context context) {
-        dataModelList = modelList;
-        mContext = context;
+    public Adapter(Context context, List<Upload> uploads) {
+            mContext = context;
+            dataModelList = uploads;
 
     }
 
@@ -44,8 +42,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate out card list item
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_items, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.list_items, parent, false);
         // Return a new view holder
         return new MyViewHolder(view);
     }
@@ -53,7 +50,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // Bind data for the item at position
-        holder.bindData(dataModelList.get(position), mContext);
+        Upload uploadCurrent = dataModelList.get(position);
+        holder.titleTextView.setText(uploadCurrent.getName());
+        Picasso.get()
+                .load(uploadCurrent.getImageUrl())
+                .placeholder(R.mipmap.ic_launcher)
+                .fit().into(holder.cardImageView);
     }
 
     @Override
