@@ -1,5 +1,6 @@
 package com.example.opencv_imageprocessing_android;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -8,6 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.Toast;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
@@ -17,7 +27,6 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,6 +38,9 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
     static final String TAG = FirstImageProcess.class.getSimpleName();
     private JavaCameraView cameraView;
     private Mat source;
+    private Button screenshoot;
+    private Bitmap bitmap;
+    private JavaCameraView parentView;
 
     private BaseLoaderCallback openCVLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -58,6 +70,19 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
 
         cameraView.setVisibility(View.VISIBLE);
         cameraView.setCvCameraViewListener(this);
+
+        screenshoot = findViewById(R.id.screenshoot);
+        parentView = findViewById(R.id.camera);
+
+
+        screenshoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bitmap = ScreenshotUtil.getInstance().takeScreenshotForScreen(FirstImageProcess.this); // Take ScreenshotUtil for activity
+                requestPermissionAndSave();
+
+            }
+        });
     }
 
     @Override
@@ -116,28 +141,38 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
 
         return source;
     }
-    private  void  screenshoot(){
-        Date date = new Date();
-        CharSequence now = android.text.format.DateFormat.format("dd-MM-yyyy_hh:mn:ss",date);
-        String filename = Environment.getExternalStorageDirectory() + "/ScreenShooter/"+ now + ".jpg";
-        View root = getWindow().getDecorView();
-        root.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(root.getDrawingCache());
-        root.setDrawingCacheEnabled(false);
-
-        File file = new File(filename);
-        file.getParentFile().mkdirs();
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
 
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void requestPermissionAndSave() {
+
+        Dexter.withActivity(this)
+                .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+
+                        if (bitmap != null) {
+                            String path = Environment.getExternalStorageDirectory().toString() + "/test.png";
+                            FileUtil.getInstance().storeBitmap(bitmap, path);
+                            Toast.makeText(FirstImageProcess.this, getString(R.string.toast_message_screenshot_success) + " " + path, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(FirstImageProcess.this, getString(R.string.toast_message_screenshot), Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        // check for permanent denial of permission
+                        if (response.isPermanentlyDenied()) {
+                            Toast.makeText(FirstImageProcess.this, getString(R.string.settings_message), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).check();
     }
 }
