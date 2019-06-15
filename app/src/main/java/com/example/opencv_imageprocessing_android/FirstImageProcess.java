@@ -1,5 +1,9 @@
 package com.example.opencv_imageprocessing_android;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +17,13 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
+
 //****************************************************************************************************
 public class FirstImageProcess extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2{
     static final String TAG = FirstImageProcess.class.getSimpleName();
@@ -104,5 +115,29 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
         Imgproc.Canny(source, source, 100, 20);
 
         return source;
+    }
+    private  void  screenshoot(){
+        Date date = new Date();
+        CharSequence now = android.text.format.DateFormat.format("dd-MM-yyyy_hh:mn:ss",date);
+        String filename = Environment.getExternalStorageDirectory() + "/ScreenShooter/"+ now + ".jpg";
+        View root = getWindow().getDecorView();
+        root.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(root.getDrawingCache());
+        root.setDrawingCacheEnabled(false);
+
+        File file = new File(filename);
+        file.getParentFile().mkdirs();
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

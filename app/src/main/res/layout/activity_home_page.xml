@@ -5,7 +5,7 @@
     style="@style/Widget.MaterialComponents.BottomAppBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage">
+    tools:context="com.example.opencv_imageprocessing_android.HomePage">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RV"
@@ -23,11 +23,7 @@
         app:fabCradleMargin="6dp"
         app:fabCradleRoundedCornerRadius="4dp"
         app:hideOnScroll="true"
-        app:navigationIcon="@drawable/ic_settings_black_24dp"
-
-
-        />
-
+        app:navigationIcon="@drawable/ic_settings_black_24dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Kamera"
@@ -46,7 +42,7 @@
         app:fab_size="mini"
         app:layout_anchor="@+id/ikinci"
         app:layout_anchorGravity="bottom|center"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
+        app:srcCompat="@drawable/ic_oval" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/ikinci"
@@ -58,7 +54,7 @@
         app:fab_size="mini"
         app:layout_anchor="@+id/Kamera"
         app:layout_anchorGravity="top|center"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
+        app:srcCompat="@drawable/ic_meteor_shower" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/ucuncu"
@@ -68,7 +64,7 @@
         app:layout_anchorGravity="top|center"
         android:layout_marginVertical="210dp"
         android:backgroundTint="#6200ee"
-        app:srcCompat="@drawable/ic_add_black_24dp"/>
+        app:srcCompat="@drawable/ic_puzzle_"/>
 
 
 

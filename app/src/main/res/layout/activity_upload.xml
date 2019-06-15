@@ -10,7 +10,8 @@
         android:id="@+id/buton_choose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dosya Sec" />
+        android:text="Dosya Sec"
+        android:backgroundTint="#6200ee"/>
 
     <EditText
         android:id="@+id/dosya_adi"
@@ -43,7 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Upload" />
+        android:text="Upload"
+        android:backgroundTint="#6200ee"/>
 
     <TextView
         android:id="@+id/text_view_show_uploads"

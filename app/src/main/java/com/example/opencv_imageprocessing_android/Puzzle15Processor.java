@@ -33,6 +33,7 @@ public class Puzzle15Processor {
             mIndexes[i] = i;
     }
 
+
     public synchronized void prepareNewGame() {
         do {
             shuffle(mIndexes);
@@ -159,6 +160,7 @@ public class Puzzle15Processor {
         }
     }
 
+
     private boolean isPuzzleSolvable() {
 
         int sum = 0;
@@ -176,4 +178,5 @@ public class Puzzle15Processor {
         }
         return sum % 2 == 0;
     }
+
 }

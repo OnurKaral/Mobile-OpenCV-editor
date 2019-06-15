@@ -1,8 +1,15 @@
 package com.example.opencv_imageprocessing_android;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
@@ -12,6 +19,12 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 //****************************************************************************************************
 
 public class HoughCircleTransform extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
@@ -46,6 +59,7 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
         cameraView.setCvCameraViewListener(this);
         //cameraView.setMaxFrameSize(1280, 720);
     }
+
 
     //****************************************************************************************************
     @Override
@@ -94,10 +108,40 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
                 Imgproc.circle(input, center, 3, new Scalar(255, 255, 255), 5);
                 Imgproc.circle(input, center, radius, new Scalar(255, 255, 255), 2);
             }
+
         }
+
 //****************************************************************************************************
         circles.release();
         input.release();
         return inputFrame.rgba();
+    }
+    private  void  screenshoot(){
+        Date date = new Date();
+        CharSequence now = android.text.format.DateFormat.format("dd-MM-yyyy_hh:mn:ss",date);
+        String filename = Environment.getExternalStorageDirectory() + "/ScreenShooter/"+ now + ".jpg";
+        View root = getWindow().getDecorView();
+        root.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(root.getDrawingCache());
+        root.setDrawingCacheEnabled(false);
+
+        File file = new File(filename);
+        file.getParentFile().mkdirs();
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+
+            Uri uri = Uri.fromFile(file);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(uri,"image/*");
+            startActivity(intent);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
