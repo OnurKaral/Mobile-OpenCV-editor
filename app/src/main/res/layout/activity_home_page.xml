@@ -7,14 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
-
 
     <android.support.design.bottomappbar.BottomAppBar
         android:id="@+id/bar"
@@ -27,7 +24,6 @@
         app:fabCradleRoundedCornerRadius="4dp"
         app:hideOnScroll="true"
         app:navigationIcon="@drawable/ic_settings_black_24dp" />
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Kamera"

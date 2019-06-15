@@ -12,16 +12,15 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
+//****************************************************************************************************
 
 public class HoughCircleTransform extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
     public static final String TAG = "src";
-    //****************************************************************************************************
     static {
         if (!OpenCVLoader.initDebug()) {
             Log.wtf(TAG, "OpenCV failed to load!");
         }
     }
-
     private JavaCameraView cameraView;
 
     private BaseLoaderCallback loaderCallback = new BaseLoaderCallback(this) {
@@ -42,7 +41,6 @@ public class HoughCircleTransform extends AppCompatActivity implements CameraBri
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hough_circle_transform);
-
 
         cameraView = (JavaCameraView) findViewById(R.id.cameraview);
         cameraView.setCvCameraViewListener(this);

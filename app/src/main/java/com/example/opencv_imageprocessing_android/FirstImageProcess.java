@@ -26,7 +26,6 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
             switch (status) {
 
                 case LoaderCallbackInterface.SUCCESS:
-
                     Log.i(TAG, "OpenCV loaded successfully");
                     cameraView.enableView();
                     cameraView.setVisibility(View.VISIBLE);
@@ -53,7 +52,6 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
     @Override
     protected void onPause() {
         super.onPause();
-
         if (cameraView != null) {
             cameraView.disableView();
         }
@@ -69,7 +67,6 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_3_0, this, openCVLoaderCallback);
 
         } else {
-
             Log.d(TAG, "OpenCV library found inside package. Using it!");
             openCVLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
@@ -81,15 +78,14 @@ public class FirstImageProcess extends AppCompatActivity implements CameraBridge
         if (cameraView != null) {
             cameraView.disableView();
         }
-
         super.onDestroy();
     }
+
     //****************************************************************************************************
     @Override
     public void onCameraViewStarted(int width, int height) {
 
         source = new Mat(height, width, CvType.CV_8UC4);
-
     }
 
     @Override

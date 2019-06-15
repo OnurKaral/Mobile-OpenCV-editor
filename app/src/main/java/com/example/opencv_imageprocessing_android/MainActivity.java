@@ -1,7 +1,5 @@
 package com.example.opencv_imageprocessing_android;
 
-
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,12 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-
-
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -52,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         txtRegister = (TextView) findViewById(R.id.txtRegister);
         relativeLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
-
 
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
@@ -90,11 +83,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void loginFunc() {
-
         mAuth.signInWithEmailAndPassword(userName,userPassword).addOnCompleteListener(MainActivity.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
@@ -104,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                             Intent i = new Intent(MainActivity.this,HomePage.class);
                             startActivity(i);
                             finish();
-
                         }
                         else{
                             // hata

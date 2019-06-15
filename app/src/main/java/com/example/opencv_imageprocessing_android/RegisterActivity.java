@@ -57,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
     private void registerFunc() {
 
         mAuth.createUserWithEmailAndPassword(userName,userPassword)
@@ -77,9 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                         else{
                             Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
-
     }
 }

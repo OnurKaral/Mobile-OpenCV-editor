@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import org.opencv.core.Mat;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -55,8 +54,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-
 
         //Kullanıcıyı Çağırma
         auth = FirebaseAuth.getInstance();
@@ -115,7 +112,6 @@ public class ProfileActivity extends AppCompatActivity {
                 str = "Lütfen yeni e-posta adresini giriniz.";
                 changeEmailOrPasswordFunc(str, true);
 
-
             }
         });
 
@@ -125,13 +121,11 @@ public class ProfileActivity extends AppCompatActivity {
                 str = "Lütfen yeni şifreyi giriniz.";
                 changeEmailOrPasswordFunc(str, false);
 
-
             }
         });
 
     }
     private void signOutFunc() {
-
         auth.signOut();
     }
 

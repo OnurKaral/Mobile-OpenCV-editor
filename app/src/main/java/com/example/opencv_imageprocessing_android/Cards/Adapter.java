@@ -2,7 +2,6 @@ package com.example.opencv_imageprocessing_android.Cards;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +11,10 @@ import android.widget.TextView;
 import com.example.opencv_imageprocessing_android.R;
 import com.example.opencv_imageprocessing_android.Upload;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
+//****************************************************************************************************
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
-    //****************************************************************************************************
     private List<Upload> dataModelList;
     private Context mContext;
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -28,28 +26,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             cardImageView = itemView.findViewById(R.id.card_imageview);
             titleTextView = itemView.findViewById(R.id.card_textview);
         }
-
-
     }
 
     public Adapter(Context context, List<Upload> uploads) {
             mContext = context;
             dataModelList = uploads;
-
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate out card list item
-        View view = LayoutInflater.from(mContext).inflate(R.layout.list_items, parent, false);
-        // Return a new view holder
+        View view = LayoutInflater.
+                from(mContext).inflate(R.layout.list_items, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        // Bind data for the item at position
         Upload uploadCurrent = dataModelList.get(position);
         holder.titleTextView.setText(uploadCurrent.getName());
         Picasso.get()
@@ -60,7 +53,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        // Return the total number of items
         return dataModelList.size();
     }
 }

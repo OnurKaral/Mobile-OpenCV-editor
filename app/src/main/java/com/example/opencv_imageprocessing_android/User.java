@@ -1,9 +1,5 @@
 package com.example.opencv_imageprocessing_android;
 
-/**
- * Created by alper_beyler on 5.10.2017.
- */
-
 public class User {
     private String userName;
     private String uId;

@@ -12,14 +12,12 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.example.opencv_imageprocessing_android.Cards.Adapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,29 +26,28 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         private Adapter mAdapter;
         private ProgressBar progressBar;
         private RecyclerView.LayoutManager mLayoutManager;
+
         FloatingActionButton birinci, ikinci,Kamera,ucuncu;
         Float translationY = 100f;
 
-    private DatabaseReference DatabaseREF;
-    private List<Upload> Uploads;
+        private DatabaseReference DatabaseREF;
+        private List<Upload> Uploads;
 
-    OvershootInterpolator overshootInterpolator = new OvershootInterpolator();
-    Boolean isMenuOpen = false;
+        OvershootInterpolator overshootInterpolator = new OvershootInterpolator();
+        Boolean isMenuOpen = false;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_home_page);
-
             initFabMenu();
-
 
             mRecyclerView = findViewById(R.id.RV);
             progressBar = findViewById(R.id.progress_bar);
-
             mRecyclerView.setHasFixedSize(true);
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLayoutManager);
+
             Uploads = new ArrayList<>();
             DatabaseREF = FirebaseDatabase.getInstance().getReference("uploads");
             DatabaseREF.addValueEventListener(new ValueEventListener() {
@@ -65,18 +62,12 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
 
                 }
 
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Toast.makeText(HomePage.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
 
-
-
                 }
             });
-
-
-
 
  //****************************************************************************************************
         BottomAppBar bar =(BottomAppBar)findViewById(R.id.bar);
@@ -149,10 +140,10 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
     }
     private  void closeMenu(){
             isMenuOpen = !isMenuOpen;
-        Kamera.animate().setInterpolator(overshootInterpolator).rotation(0f).setDuration(300).start();
-        birinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
-        ikinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
-        ucuncu.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
+            Kamera.animate().setInterpolator(overshootInterpolator).rotation(0f).setDuration(300).start();
+            birinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
+            ikinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
+            ucuncu.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
     }
     @Override
     public void onClick(View v) {

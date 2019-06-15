@@ -20,10 +20,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -31,9 +29,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
 
 public class UploadActivity extends AppCompatActivity    {
 
@@ -50,7 +45,6 @@ public class UploadActivity extends AppCompatActivity    {
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
-
     private StorageTask mUploadTask;
 
     @Override
@@ -110,8 +104,6 @@ public class UploadActivity extends AppCompatActivity    {
             mImageUri = data.getData();
             ImageView.setImageURI(mImageUri);
 
-
-
         }
     }
 
@@ -138,8 +130,6 @@ public class UploadActivity extends AppCompatActivity    {
                                 }
                             }, 500);
 
-
-
                             Toast.makeText(UploadActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                             Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
                                     taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
@@ -165,6 +155,7 @@ public class UploadActivity extends AppCompatActivity    {
         } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private void HomePageacar(){
