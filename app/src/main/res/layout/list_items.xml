@@ -29,6 +29,6 @@
             android:layout_height="560dp" />
 
     </LinearLayout>
-    
+
 </android.support.design.card.MaterialCardView>
 
