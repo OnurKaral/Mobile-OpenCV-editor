@@ -47,8 +47,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.titleTextView.setText(uploadCurrent.getName());
         Picasso.get()
                 .load(uploadCurrent.getImageUrl())
-                .placeholder(R.mipmap.ic_launcher)
-                .fit().into(holder.cardImageView);
+                .fit()
+                .centerInside()
+                .into(holder.cardImageView);
     }
 
     @Override

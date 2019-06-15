@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.internal.view.SupportMenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ProgressBar;
@@ -26,8 +30,20 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         private Adapter mAdapter;
         private ProgressBar progressBar;
         private RecyclerView.LayoutManager mLayoutManager;
+        private BottomAppBar bottomAppBar;
 
-        FloatingActionButton birinci, ikinci,Kamera,ucuncu;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.upload_bar:
+                Intent intent = new Intent(HomePage.this,UploadActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+    FloatingActionButton birinci, ikinci,Kamera,ucuncu;
         Float translationY = 100f;
 
         private DatabaseReference DatabaseREF;
@@ -41,6 +57,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_home_page);
             initFabMenu();
+            setSupportActionBar(bottomAppBar);
 
             mRecyclerView = findViewById(R.id.RV);
             progressBar = findViewById(R.id.progress_bar);
@@ -67,6 +84,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(HomePage.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
 
                 }
+
             });
 
  //****************************************************************************************************
@@ -145,6 +163,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             ikinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ucuncu.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.app_barmenu,menu);
+        return true;
+    }
+
     @Override
     public void onClick(View v) {
             switch (v.getId()){
@@ -163,5 +188,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                     break;
 
             }
+
+
     }
 }

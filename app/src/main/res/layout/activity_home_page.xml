@@ -19,11 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="#6200ee"
-        app:fabCradleMargin="6dp"
         app:fabAlignmentMode="end"
+        app:fabCradleMargin="6dp"
         app:fabCradleRoundedCornerRadius="4dp"
         app:hideOnScroll="true"
-        app:navigationIcon="@drawable/ic_settings_black_24dp" />
+        app:navigationIcon="@drawable/ic_settings_black_24dp"
+
+
+        />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Kamera"
