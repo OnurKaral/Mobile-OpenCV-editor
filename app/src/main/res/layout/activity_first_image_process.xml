@@ -31,7 +31,8 @@
         android:backgroundTint="#6200ee"
         android:layout_centerHorizontal="true"
         android:text="ScreenShoot"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>
 

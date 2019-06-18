@@ -1,6 +1,7 @@
 package com.example.opencv_imageprocessing_android;
 
 public class User {
+
     private String userName;
     private String uId;
 
@@ -28,6 +29,4 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-
 }

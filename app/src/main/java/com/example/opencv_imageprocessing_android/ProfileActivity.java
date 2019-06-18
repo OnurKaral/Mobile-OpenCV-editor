@@ -2,10 +2,10 @@ package com.example.opencv_imageprocessing_android;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -18,8 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import org.opencv.core.Mat;
-
+//****************************************************************************************************
 public class ProfileActivity extends AppCompatActivity {
     //XML bileşen tanımlama
     private TextView userNameTxt;
@@ -110,7 +109,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 str = "Lütfen yeni şifreyi giriniz.";
                 changeEmailOrPasswordFunc(str, false);
-
             }
         });
 
@@ -139,7 +137,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         final AlertDialog mAlertDialog = builder.create();
         mAlertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-
             @Override
             public void onShow(DialogInterface dialog) {
 
@@ -152,20 +149,16 @@ public class ProfileActivity extends AppCompatActivity {
                         if(edit.getText().toString().isEmpty()){
 
                             edit.setError("Lütfen ilgili alanı doldurunuz!");
-
                         }else{
 
                             if(option){
 
                                 changeEmail();
-
                             }else{
 
                                 changePassword();
-
                             }
                         }
-
                     }
                 });
             }
@@ -199,7 +192,6 @@ public class ProfileActivity extends AppCompatActivity {
                                     signOutFunc(); // sign out
                                     Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
                                     startActivity(intent);
-
                                 } else {
                                     edit.setText("");
                                     Toast.makeText(ProfileActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -209,7 +201,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         mAlertDialog.show();
-
     }
 }
 

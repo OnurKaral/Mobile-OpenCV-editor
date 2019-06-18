@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_marginBottom="10dp"
             android:id="@+id/userNameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:paddingEnd="5dp"
             />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:paddingEnd="5dp"
             />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
         android:id="@+id/signOutBttn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
         android:textColor="#FFFFFF"
         app:cornerRadius="5dp" />
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Geritusu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,22 +1,20 @@
 package com.example.opencv_imageprocessing_android;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.bottomappbar.BottomAppBar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.internal.view.SupportMenuItem;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.example.opencv_imageprocessing_android.Cards.Adapter;
+import com.example.opencv_imageprocessing_android.Adapters.Adapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +41,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         return true;
     }
 
-    FloatingActionButton birinci, ikinci,Kamera,ucuncu;
+        FloatingActionButton birinci, ikinci,Kamera,ucuncu;
         Float translationY = 100f;
 
         private DatabaseReference DatabaseREF;
@@ -82,9 +80,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Toast.makeText(HomePage.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
-
                 }
-
             });
 
  //****************************************************************************************************
@@ -117,7 +113,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-
         setSupportActionBar(bar);
         bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +121,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                 startActivity(intent);
             }
         });
+
+
     }
 
     private  void initFabMenu(){
@@ -158,6 +155,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
     }
     private  void closeMenu(){
             isMenuOpen = !isMenuOpen;
+
             Kamera.animate().setInterpolator(overshootInterpolator).rotation(0f).setDuration(300).start();
             birinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ikinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
@@ -188,7 +186,5 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                     break;
 
             }
-
-
     }
 }

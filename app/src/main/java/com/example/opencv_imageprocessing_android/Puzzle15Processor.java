@@ -1,6 +1,5 @@
 package com.example.opencv_imageprocessing_android;
 
-import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
@@ -8,7 +7,7 @@ import org.opencv.core.Size;
 import org.opencv.core.Point;
 import org.opencv.imgproc.Imgproc;
 import android.util.Log;
-
+//****************************************************************************************************
 public class Puzzle15Processor {
 
     private static final int GRID_SIZE = 4;
@@ -50,14 +49,12 @@ public class Puzzle15Processor {
                 mCells15[k] = mRgba15.submat(i * height / GRID_SIZE, (i + 1) * height / GRID_SIZE, j * width / GRID_SIZE, (j + 1) * width / GRID_SIZE);
             }
         }
-
         for (int i = 0; i < GRID_AREA; i++) {
             Size s = Imgproc.getTextSize(Integer.toString(i + 1), 3/* CV_FONT_HERSHEY_COMPLEX */, 1, 2, null);
             mTextHeights[i] = (int) s.height;
             mTextWidths[i] = (int) s.width;
         }
     }
-
     //****************************************************************************************************
     public synchronized Mat puzzleFrame(Mat inputPicture) {
         Mat[] cells = new Mat[GRID_AREA];
@@ -77,7 +74,6 @@ public class Puzzle15Processor {
         rows = rows - rows%4;
         cols = cols - cols%4;
 
-
         for (int i = 0; i < GRID_AREA; i++) {
             int idx = mIndexes[i];
             if (idx == GRID_EMPTY_INDEX)
@@ -94,7 +90,6 @@ public class Puzzle15Processor {
             cells[i].release();
 
         drawGrid(cols, rows, mRgba15);
-
         return mRgba15;
     }
 
@@ -160,7 +155,6 @@ public class Puzzle15Processor {
         }
     }
 
-
     private boolean isPuzzleSolvable() {
 
         int sum = 0;
@@ -178,5 +172,4 @@ public class Puzzle15Processor {
         }
         return sum % 2 == 0;
     }
-
 }

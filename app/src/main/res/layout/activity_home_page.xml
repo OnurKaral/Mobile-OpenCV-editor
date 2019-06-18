@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.MaterialComponents.BottomAppBar"
@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.opencv_imageprocessing_android.HomePage">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-    <android.support.design.bottomappbar.BottomAppBar
+    <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         app:hideOnScroll="true"
         app:navigationIcon="@drawable/ic_settings_black_24dp" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Kamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,30 +33,28 @@
         app:layout_anchor="@id/bar"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/birinci"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="150dp"
         app:backgroundTint="#6200ee"
-        app:fab_size="mini"
         app:layout_anchor="@+id/ikinci"
         app:layout_anchorGravity="bottom|center"
         app:srcCompat="@drawable/ic_oval" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ikinci"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="90dp"
         android:backgroundTint="#6200ee"
         android:padding="30dp"
-        app:fab_size="mini"
         app:layout_anchor="@+id/Kamera"
         app:layout_anchorGravity="top|center"
         app:srcCompat="@drawable/ic_meteor_shower" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ucuncu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,4 +71,4 @@
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

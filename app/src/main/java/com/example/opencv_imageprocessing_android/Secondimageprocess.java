@@ -1,22 +1,22 @@
 package com.example.opencv_imageprocessing_android;
 
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
-import org.opencv.core.Mat;
-import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener;
-import org.opencv.android.JavaCameraView;
 import android.os.Bundle;
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener;
+import org.opencv.android.JavaCameraView;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Mat;
 
-public class Secondimageprocess extends Activity implements CvCameraViewListener, View.OnTouchListener {
+public class Secondimageprocess extends AppCompatActivity implements CvCameraViewListener, View.OnTouchListener {
 
     private static final String  TAG = "Sample::Puzzle15::Activity";
     private CameraBridgeViewBase mOpenCvCameraView;
@@ -127,7 +127,6 @@ public class Secondimageprocess extends Activity implements CvCameraViewListener
             /* click is inside the picture. Deliver this event to processor */
             mPuzzle15.deliverTouchEvent(xpos, ypos);
         }
-
         return false;
     }
     //****************************************************************************************************

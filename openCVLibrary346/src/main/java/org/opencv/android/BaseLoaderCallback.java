@@ -1,10 +1,10 @@
 package org.opencv.android;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 /**
@@ -133,7 +133,7 @@ public abstract class BaseLoaderCallback implements LoaderCallbackInterface {
 
     void finish()
     {
-        ((Activity) mAppContext).finish();
+        ((AppCompatActivity) mAppContext).finish();
     }
 
     protected Context mAppContext;
