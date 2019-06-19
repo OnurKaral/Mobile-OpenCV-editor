@@ -26,10 +26,10 @@
         app:layout_anchorGravity="top|center"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
-
-
-
-
-
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/chaticon"
+        android:layout_gravity="center"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

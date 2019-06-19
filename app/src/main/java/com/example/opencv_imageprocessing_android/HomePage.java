@@ -1,25 +1,28 @@
 package com.example.opencv_imageprocessing_android;
 
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.opencv_imageprocessing_android.Adapters.Adapter;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +87,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             });
 
  //****************************************************************************************************
-        BottomAppBar bar =(BottomAppBar)findViewById(R.id.bar);
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.ikinci);
+        BottomAppBar bar = findViewById(R.id.bar);
+        FloatingActionButton floatingActionButton = findViewById(R.id.ikinci);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +98,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        FloatingActionButton floatingActionButton1 = (FloatingActionButton)findViewById(R.id.birinci);
+        FloatingActionButton floatingActionButton1 = findViewById(R.id.birinci);
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +107,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        FloatingActionButton floatingActionButton2 = (FloatingActionButton)findViewById(R.id.ucuncu);
+        FloatingActionButton floatingActionButton2 = findViewById(R.id.ucuncu);
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,8 +124,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
                 startActivity(intent);
             }
         });
-
-
     }
 
     private  void initFabMenu(){

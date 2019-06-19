@@ -3,10 +3,8 @@ package com.example.opencv_imageprocessing_android;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -15,12 +13,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
@@ -55,8 +57,8 @@ public class UploadActivity extends AppCompatActivity    {
         ImageView = findViewById(R.id.image_view);
         mProgressBar = findViewById(R.id.progress_bar);
 
-        StorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        DatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        StorageRef = FirebaseStorage.getInstance().getReference("uploads/");
+        DatabaseRef = FirebaseDatabase.getInstance().getReference("uploads/");
 
         ButtonChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,12 +96,10 @@ public class UploadActivity extends AppCompatActivity    {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             ImageUri = data.getData();
             ImageView.setImageURI(ImageUri);
-
         }
     }
 
@@ -108,45 +108,45 @@ public class UploadActivity extends AppCompatActivity    {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
-
     private void uploadFile() {
-        if (ImageUri != null)
-        {
-            StorageRef.putFile(ImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
-            {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
-                {
-                    if (!task.isSuccessful())
-                    {
-                        throw task.getException();
+        if (ImageUri != null) {
+            StorageReference fileReference = StorageRef.child(System.currentTimeMillis()
+                    + "." + getFileExtension(ImageUri));
 
-                    }
-                    return StorageRef.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task)
-            {
+            mUploadTask = fileReference.putFile(ImageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressBar.setProgress(0);
+                                }
+                            }, 500);
 
-                if (task.isSuccessful())
-                {
-                    Uri downloadUri = task.getResult();
-                    Log.e(TAG, "then: " + downloadUri.toString());
-
-                    Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
-                            downloadUri.toString());
-
-                    DatabaseRef.push().setValue(upload);
-                    Toast.makeText(UploadActivity.this, "Upload Successful" , Toast.LENGTH_SHORT).show();
-
-                } else
-                {
-                    Toast.makeText(UploadActivity.this, "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                            Toast.makeText(UploadActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
+                                    taskSnapshot.getStorage().getMetadata().toString());
+                            String uploadId = DatabaseRef.push().getKey();
+                            DatabaseRef.child(uploadId).setValue(upload);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(UploadActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            mProgressBar.setProgress((int) progress);
+                        }
+                    });
+        } else {
+            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
 
