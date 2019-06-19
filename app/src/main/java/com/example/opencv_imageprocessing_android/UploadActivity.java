@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -110,26 +110,28 @@ public class UploadActivity extends AppCompatActivity    {
     }
     private void uploadFile() {
         if (ImageUri != null) {
-            StorageReference fileReference = StorageRef.child(System.currentTimeMillis()
+            final StorageReference fileReference = StorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(ImageUri));
 
             mUploadTask = fileReference.putFile(ImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
-                                public void run() {
-                                    mProgressBar.setProgress(0);
-                                }
-                            }, 500);
+                                public void onSuccess(Uri uri) {
 
+                                    Log.d(TAG,"onSuccess: uri= "+ uri.toString());
+
+                                    Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
+                                            uri.toString());
+
+                                    String uploadId = DatabaseRef.push().getKey();
+                                    DatabaseRef.child(uploadId).setValue(upload);
+                                }
+                            });
                             Toast.makeText(UploadActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
-                            Upload upload = new Upload(Dosya_adi.getText().toString().trim(),
-                                    taskSnapshot.getStorage().getMetadata().toString());
-                            String uploadId = DatabaseRef.push().getKey();
-                            DatabaseRef.child(uploadId).setValue(upload);
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
