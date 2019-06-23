@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
@@ -104,7 +105,7 @@ public class FirstImageProcess extends Activity implements CameraBridgeViewBase.
 
         Imgproc.cvtColor(source, source, Imgproc.COLOR_BGR2GRAY);
         Imgproc.blur(source, source, new Size(3., 3.));
-        Imgproc.Canny(source, source, 200, 20);
+        Imgproc.Canny(source, source, 100, 10);
 
         return source;
     }
