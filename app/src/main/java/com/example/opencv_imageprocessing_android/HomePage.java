@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -116,14 +117,18 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        setSupportActionBar(bar);
-        bar.setNavigationOnClickListener(new View.OnClickListener() {
+        bar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this,ProfileActivity.class);
-                startActivity(intent);
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                return true;
             }
         });
+
+        birinci.setClickable(false);
+        ikinci.setClickable(false);
+        ucuncu.setClickable(false);
     }
 
     private  void initFabMenu(){
@@ -144,6 +149,10 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         birinci.setOnClickListener(this);
         ikinci.setOnClickListener(this);
         ucuncu.setOnClickListener(this);
+
+
+
+
     }
 
     private void openMenu(){
@@ -153,6 +162,11 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             birinci.animate().translationY(0f).alpha(1f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ikinci.animate().translationY(0f).alpha(1f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ucuncu.animate().translationY(0f).alpha(1f).setInterpolator(overshootInterpolator).setDuration(300).start();
+        birinci.setClickable(true);
+        ikinci.setClickable(true);
+        ucuncu.setClickable(true);
+
+
     }
     private  void closeMenu(){
             isMenuOpen = !isMenuOpen;
@@ -161,6 +175,11 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
             birinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ikinci.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
             ucuncu.animate().translationY(translationY).alpha(0f).setInterpolator(overshootInterpolator).setDuration(300).start();
+
+            birinci.setClickable(false);
+            ikinci.setClickable(false);
+            ucuncu.setClickable(false);
+
     }
 
     @Override

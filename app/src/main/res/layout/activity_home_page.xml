@@ -7,23 +7,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.opencv_imageprocessing_android.HomePage">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="#6200ee"
-        app:fabAlignmentMode="end"
+        app:fabAlignmentMode="center"
         app:fabCradleMargin="6dp"
         app:fabCradleRoundedCornerRadius="4dp"
-        app:hideOnScroll="true"
-        app:navigationIcon="@drawable/ic_settings_black_24dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:navigationIcon="@drawable/ic_menu_24px" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Kamera"
@@ -64,11 +59,13 @@
         android:backgroundTint="#6200ee"
         app:srcCompat="@drawable/ic_puzzle_"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
 
-
-
-
-
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
