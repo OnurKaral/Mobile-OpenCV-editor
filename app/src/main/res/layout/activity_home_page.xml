@@ -17,7 +17,6 @@
         app:fabCradleMargin="6dp"
         app:fabCradleRoundedCornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:navigationIcon="@drawable/ic_menu_24px" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
